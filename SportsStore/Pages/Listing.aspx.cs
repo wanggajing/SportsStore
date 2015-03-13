@@ -12,13 +12,35 @@ namespace SportsStore.Pages
     public partial class Listing : System.Web.UI.Page
     {
         private Repository repo = new Repository();
+        private int pageSize = 4;
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
         protected IEnumerable<Product> GetProducts()
         {
-            return repo.Products;
+            //the
+//Skip method to ignore the Product objects that occur before our desired page, and the Take method to select the
+//quantity of Product objects we show to the user.
+            return repo.Products.OrderBy(p => p.ProductID)
+                                .Skip((CurrentPage - 1) * pageSize)
+                                .Take(pageSize); 
+        }
+        protected int CurrentPage
+        {
+            get
+            {
+                int page;
+                page = int.TryParse(Request.QueryString["page"], out page) ? page : 1;
+                return page > MaxPage ? MaxPage : page;
+            }
+        }
+        protected int MaxPage
+        {
+            get
+            {
+                return (int)Math.Ceiling((decimal)repo.Products.Count() / pageSize);
+            }
         }
     }
 }
