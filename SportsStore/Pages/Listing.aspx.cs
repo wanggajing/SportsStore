@@ -22,7 +22,7 @@ namespace SportsStore.Pages
             //the
 //Skip method to ignore the Product objects that occur before our desired page, and the Take method to select the
 //quantity of Product objects we show to the user.
-            return repo.Products.OrderBy(p => p.ProductID)
+            return FilterProducts().OrderBy(p => p.ProductID)
                                 .Skip((CurrentPage - 1) * pageSize)
                                 .Take(pageSize); 
         }
@@ -40,7 +40,8 @@ namespace SportsStore.Pages
         {
             get
             {
-                return (int)Math.Ceiling((decimal)repo.Products.Count() / pageSize);
+                int productCount = FilterProducts().Count();
+                return (int)Math.Ceiling((decimal)productCount / pageSize);
             }
         }
         private int GetPageFromRequest()
@@ -49,6 +50,12 @@ namespace SportsStore.Pages
             string reqValue = (string)RouteData.Values["page"] ?? 
                 Request.QueryString["page"];
             return reqValue != null && int.TryParse(reqValue, out page) ? page : 1;
+        }
+        private IEnumerable<Product> FilterProducts()
+        {
+            IEnumerable<Product> products = repo.Products;
+            string currentCategory = (string)RouteData.Values["category"] ?? Request.QueryString["category"];
+            return currentCategory == null ? products : products.Where(p => p.Category == currentCategory);
         }
     }
 }

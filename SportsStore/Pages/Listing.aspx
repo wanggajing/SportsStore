@@ -8,6 +8,8 @@
             Response.Write(string.Format("<h3>{0}</h3>", prod.Name));
             Response.Write(prod.Description);
             Response.Write(string.Format("<h4>{0:c}</h4>", prod.Price));
+            Response.Write(string.Format("<button name='add' type='submit'"
+                + "value='{0}'>Add to Cart</button>", prod.ProductID));
             Response.Write("</div>");
         }%>
     </div>
