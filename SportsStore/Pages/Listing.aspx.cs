@@ -1,9 +1,11 @@
 ﻿using SportsStore.Models;
 using SportsStore.Models.Repository;
+using SportsStore.Pages.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Routing;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -15,9 +17,25 @@ namespace SportsStore.Pages
         private int pageSize = 4;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (IsPostBack)
+            {
+                int selectedProductId;
+                if (int.TryParse(Request.Form["add"], out selectedProductId))
+                {
+                    Product selectedProduct = repo.Products
+                    .Where(p => p.ProductID == selectedProductId).FirstOrDefault();
+                    if (selectedProduct != null)
+                    {
+                        SessionHelper.GetCart(Session).AddItem(selectedProduct, 1);
+                        SessionHelper.Set(Session, SessionKey.RETURN_URL,
+                        Request.RawUrl);
+                        Response.Redirect(RouteTable.Routes
+                        .GetVirtualPath(null, "cart", null).VirtualPath);
+                    }
+                }
+            }
         }
-        protected IEnumerable<Product> GetProducts()
+        public IEnumerable<Product> GetProducts()
         {
             //the
 //Skip method to ignore the Product objects that occur before our desired page, and the Take method to select the
