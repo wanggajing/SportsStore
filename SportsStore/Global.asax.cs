@@ -1,5 +1,7 @@
-﻿using System;
+﻿using SportsStore.Models.Repository;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Routing;
@@ -15,6 +17,7 @@ namespace SportsStore
 
         protected void Application_Start(object sender, EventArgs e)
         {
+            Database.SetInitializer<EFDbContext>(null);//!!!!important
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
 
