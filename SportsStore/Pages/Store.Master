@@ -5,6 +5,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <asp:ContentPlaceHolder ID="headContent" runat="server">
+    </asp:ContentPlaceHolder>
     <title>SportsStore</title>
     <link rel="stylesheet" href="/Content/Styles.css" />
 </head>
