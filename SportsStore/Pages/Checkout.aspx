@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Store.Master" AutoEventWireup="true" CodeBehind="Checkout.aspx.cs" Inherits="SportsStore.Pages.Checkout" %>
 <asp:Content ID="Head" ContentPlaceHolderID="headContent" runat="server">
     <script src="../Scripts/jquery-2.1.3.js"></script>
-    <script src="../Scripts/validation.js"></script>
+    <script src="../Scripts/jquery.validate.js"></script>
+    <script src="../Scripts/validationFramwork.js"></script>
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContent" runat="server">
 <div id="content">

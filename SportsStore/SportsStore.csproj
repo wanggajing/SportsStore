@@ -86,7 +86,11 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Pages\Listing.aspx" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\validation.js" />
+    <Content Include="Scripts\validationFramwork.js" />
     <Content Include="Store\Cart.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>

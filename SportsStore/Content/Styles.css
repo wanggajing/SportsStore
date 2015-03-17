@@ -56,3 +56,11 @@ margin-left: .5em; background-color: #333; color:White; border: 1px solid black;
 .checkout label { display: inline-block; width: 50px; text-align: right;}
 .checkout div input { width: 200px; margin: 2px;}
 #errors { color: red;}
+
+label.error {
+    float: none;
+    color: red;
+    padding-left: .5em;
+    vertical-align: top;
+    display: inline;
+}

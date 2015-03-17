@@ -14,6 +14,7 @@ $(document).ready(function () {
     $("#name").blur(function () {
         if ($("#name").val().length > 0) {
             $(".errorMsg").text("");
+            ok1 = ture;
         }
     });
 });
