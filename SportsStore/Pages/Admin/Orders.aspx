@@ -5,6 +5,16 @@
     <div class="outerContainer">
         <table class="orderTable">
             <tr><th>Name</th><th>City</th><th>Items</th><th>Total</th><th></th></tr>
+            <asp:Repeater ID="Repeater1" runat="server" ItemType="SportsStore.Models.Order" SelectMethod="GetOrders">
+                <ItemTemplate>
+                    <tr>
+                        <td><%#:Item.Name%></td>
+                        <td><%#:Item.City%></td>
+                        <td><%#Item.OrderLines.Sum(ol=>ol.Quantity)%></td>
+                        <td></td>
+                    </tr>
+                </ItemTemplate>
+            </asp:Repeater>
         </table>
     </div>
 </asp:Content>
