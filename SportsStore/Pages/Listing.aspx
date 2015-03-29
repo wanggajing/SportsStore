@@ -15,13 +15,13 @@
         </asp:Repeater>
     </div>
     <%-- The old way --%>
-    <div class="pager">
+    <%-- <div class="pager">
         <% for (int i = 1; i <= MaxPage; i++) {
             Response.Write(
             string.Format("<a href='/Pages/Listing.aspx?page={0}' {1}>{2}</a>",
             i, i == CurrentPage ? "class='selected'" : "", i));
         }%>
-    </div>
+    </div> --%>
     <br />
     <div class="pager">
         <% for (int i = 1; i <= MaxPage; i++) {
