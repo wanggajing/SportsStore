@@ -15,6 +15,10 @@
         <div id="header">
             <SS:CartSummary runat="server" />
             <div class="title">SPORTS STORE</div>
+            <div class="admin">
+                <a id="adminProducts" runat="server">Manage Products</a>
+                <a id="adminOrders" runat="server">Manage Orders</a>
+            </div>
         </div>
         <div id="categories">
             <SS:CatLinks runat="server" />
